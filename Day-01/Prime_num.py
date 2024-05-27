@@ -1,5 +1,8 @@
 import datetime as date
 n = int(input())
+
+
+
 def prime(a):
     c=0
     for i in range(2,a):

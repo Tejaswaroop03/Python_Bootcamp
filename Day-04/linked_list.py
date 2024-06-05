@@ -61,9 +61,11 @@ class sll:
         while(fast!=None and fast.nxt!=None):
             fast=fast.nxt.nxt
             slow=slow.nxt
-        print("middle node:",slow.data)        
-        
-
+        print("middle node:",slow.data)
+        if(fast==None):
+            print("even number of nodes")
+        else:
+            print("odd number of nodes")            
 l1=sll()
 l1.add_back(10)
 l1.add_back(20)
@@ -79,7 +81,7 @@ l1.display()
 #l1.remove_front()
 print()
 #l1.display()
-#l1.middle_node()
+l1.middle_node()
 #l1.remove_back()
 #l1.display()         
 

@@ -67,6 +67,17 @@ class dll:
         else:
             print("not a palindrome")
      
+    def rotate(self):
+        slow=self.head
+        fast=self.head
+        while fast!=None and fast.next!=None:
+            slow=slow.next
+            fast=fast.next.next
+        self.tail.next=self.head
+        self.head.prev=self.tail
+        slow.prev.next=None
+        slow.prev=None
+        self.head=slow   
 
 
             
@@ -80,15 +91,20 @@ class dll:
 
 d1=dll()
 d1.add_back(3)
-d1.add_back(2)
-d1.add_front(2)
-d1.add_front(1)
-d1.add_back(1)
+d1.add_back(5)
+d1.add_back(7)
+d1.add_back(8)
+d1.add_back(9)
+d1.add_back(10)
+d1.add_back(12)
+d1.add_back(15)
 d1.display()
 print()
-d1.search(6)
-d1.length()
-d1.check_pali()
+#d1.search(6)
+#d1.length()
+#d1.check_pali()
+d1.rotate()
+d1.display()
 
 
 

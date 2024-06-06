@@ -53,9 +53,6 @@ class sll:
         while temp.nxt.nxt!=None:
             temp=temp.nxt
         temp.nxt=None    
-
-
-
     def middle_node(self):
         fast=slow=self.head
         while(fast!=None and fast.nxt!=None):

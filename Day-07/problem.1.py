@@ -25,7 +25,7 @@ while(i!=len(s)):
         if temp==s1:
             flag=0
             print("yes")
-            #break
+            break
         else:
             temp=[]
             i-=n-1    

@@ -135,7 +135,7 @@ else:
     print("unbalanced tree")
 print("n.o of leaf nodes:",t1.leaf_nodes(t1.root))
 print("sum of leaf nodes:",t1.sum_leaf_nodes(t1.root))      
-print(t1.search(t1.root,1))
-print(t1.depth(t1.root,1,0))
+print("search for an element:",t1.search(t1.root,1))
+print("depth:",t1.depth(t1.root,1,0))
 
 

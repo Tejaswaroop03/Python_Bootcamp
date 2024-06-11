@@ -63,8 +63,51 @@ class Tree:
             return -1
         return max(self.height(root.left),self.height(root.right))+1
 
+    def balance(self,root):
+        return abs(self.height(root.left)-self.height(root.right))
+    
+    def leaf_nodes(self,root):
+        if root==None:
+            return 0
+        if root.left==None and root.right==None:
+            return 1
+        return self.leaf_nodes(root.left)+self.leaf_nodes(root.right)
+    
+    def sum_leaf_nodes(self,root):
+        if root==None:
+            return 0
+        if root.left==None and root.right==None:
+            return root.data
+        return self.sum_leaf_nodes(root.left)+self.sum_leaf_nodes(root.right)
+    
+    def search(self,root,x):
+        if root==None:
+            return False
+        if root.data==x:
+            return True
+        if root.data>x:
+            return self.search(root.left,x)
+        else:
+            return self.search(root.right,x)
+        
+    def depth(self,root,x):
+        if root==None:
+            return False
 
+    def depth(self,root,y,c):
+        if(root==None):
+            return -1
+        if(root.data==y):
+            return c
+        if(root.data>y):
+            return self.depth(root.left,y,c+1)
+        else:
+            return self.depth(root.right,y,c+1)    
 
+        
+    
+
+     
 t1=Tree()
 t1.root = t1.create(t1.root, 10)
 t1.root = t1.create(t1.root, 20)
@@ -72,6 +115,7 @@ t1.root = t1.create(t1.root, 5)
 t1.root = t1.create(t1.root, 2)
 t1.root = t1.create(t1.root, 9)
 t1.root=t1.create(t1.root,1)
+t1.root=t1.create(t1.root,25)
 print("inorder:",end=" ")
 t1.inorder(t1.root)
 print()
@@ -85,4 +129,13 @@ print("sum of nodes:",t1.add_nodes(t1.root))
 print("sum of even nodes:",t1.add_even(t1.root))
 print("absolute diff of even and odd :",t1.diff(t1.root))
 print("height od the tree:",t1.height(t1.root))
+if(t1.balance(t1.root)<=1):
+    print("balanced tree")
+else:
+    print("unbalanced tree")
+print("n.o of leaf nodes:",t1.leaf_nodes(t1.root))
+print("sum of leaf nodes:",t1.sum_leaf_nodes(t1.root))      
+print(t1.search(t1.root,1))
+print(t1.depth(t1.root,1,0))
+
 

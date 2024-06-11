@@ -89,10 +89,6 @@ class Tree:
             return self.search(root.left,x)
         else:
             return self.search(root.right,x)
-        
-    def depth(self,root,x):
-        if root==None:
-            return False
 
     def depth(self,root,y,c):
         if(root==None):

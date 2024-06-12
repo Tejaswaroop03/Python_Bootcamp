@@ -98,7 +98,13 @@ class Tree:
         if(root.data>y):
             return self.depth(root.left,y,c+1)
         else:
-            return self.depth(root.right,y,c+1)    
+            return self.depth(root.right,y,c+1)
+
+    def left_view(self,root):
+        if root==None:
+            return
+        print(root.data,end="")
+        self.left_view(root.left)
 
         
     
@@ -133,5 +139,6 @@ print("n.o of leaf nodes:",t1.leaf_nodes(t1.root))
 print("sum of leaf nodes:",t1.sum_leaf_nodes(t1.root))      
 print("search for an element:",t1.search(t1.root,1))
 print("depth:",t1.depth(t1.root,1,0))
+t1.left
 
 

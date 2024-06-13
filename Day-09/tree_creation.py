@@ -1,3 +1,4 @@
+from collections import defaultdict
 class Node:
     def __init__(self, x) -> None:
         self.data = x
@@ -100,16 +101,74 @@ class Tree:
         else:
             return self.depth(root.right,y,c+1)
 
-    def left_view(self,root):
-        if root==None:
-            return
-        print(root.data,end="")
-        self.left_view(root.left)
+    def left_view(self,node):
+        l=[]
+        def view(root,level):
+            if not root:
+                return
+            if level not in l:
+                print(root.data,level)
+            view(root.left,level+1)
+            view(root.right,level+1)
+        view(node,0)
+        print(l) 
 
-        
+    def right_view(self,node):
+        l=[]
+        def view(root,level):
+            if not root:
+                return
+            if level not in l:
+                print(root.data,level)
+            view(root.right,level+1)
+            view(root.left,level+1)
+        view(node,0)
+
+    def top_view(self,node):
+        d=defaultdict(int)
+        def view(root,level):
+            if not root:
+                return 
+            if level not in d:
+                d[level]=root.data
+
+            view(root.left,level+1)
+            view(root.right,level+1)
+        view(node,0)             
     
 
-     
+    def bfs(self,node):
+        d = defaultdict(list)
+        q = [(node,0)]
+
+        while q:
+            node,h = q.pop()
+
+            d[h].append(node.data)
+            if node.left:
+                q.append((node.left,h+1)) 
+            if node.right:
+                q.append((node.right,h+1))
+
+    def fun(self,root):
+        if(root==None):
+            return
+        d={}
+        q=[(root,0)]
+        while():
+            root=q[0][0]
+            if(root.left!=None):
+                q.append((root.left,q[0][1]-1))
+            if(root.right!=None):
+                q.appen((root.right,q[0][1]+1))
+            if(q[0][1] not in d):
+                d[q[0][1]]=root.data
+            q.pop(0)
+        for i in sorted(d):
+            print(d[i],end=" ")
+
+
+        
 t1=Tree()
 t1.root = t1.create(t1.root, 10)
 t1.root = t1.create(t1.root, 20)
@@ -139,6 +198,10 @@ print("n.o of leaf nodes:",t1.leaf_nodes(t1.root))
 print("sum of leaf nodes:",t1.sum_leaf_nodes(t1.root))      
 print("search for an element:",t1.search(t1.root,1))
 print("depth:",t1.depth(t1.root,1,0))
-t1.left
-
+t1.left_view(t1.root)
+t1.right_view(t1.root)
+print()
+t1.bfs(t1.root)
+print()                     
+t1.fun(t1.root)
 

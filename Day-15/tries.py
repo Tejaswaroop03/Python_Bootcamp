@@ -24,12 +24,36 @@ class tries:
         else:                    
             return False                      
     def search_prefix(self,str):
+        l=[]
         t=self.root
         for i in str:
             if(i not in t.d):
                 return False
-            t=t.d[i]
-        return True        
+            t=t.d[i] 
+        return True
+    
+    def all_prefix(self,str):
+        def fun(t,s):
+            if (t.flag==1):
+                print(s)
+                return 
+            for i in t.d:
+                fun(t.d[i],s+i)
+        t=self.root
+        s="" 
+        for i in str:
+            if(i in t.d):
+                t=t.d[i]
+        fun(t,s)        
+
+    def bfs(self):
+        t=self.root
+        if flag==1:
+            print(t.d)
+        bfs(t.d[i])
+
+
+
           
 t1=tries()        
 '''t1.insert('world')
